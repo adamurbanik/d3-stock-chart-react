@@ -1,0 +1,45 @@
+{
+  "plugins": [
+    "transform-flow-strip-types",
+    "ramda",
+    [
+      "file-loader",
+      {
+        "name": "[path][name].[ext]",
+        "extensions": ["css", "json", "png", "jpg", "jpeg", "svg", "ico"],
+        "publicPath": "/",
+        "outputPath": null,
+        "context": "/src/public",
+        "limit": 0
+      }
+    ]
+  ],
+  "env": {
+    "development": {
+      "presets": ["next/babel"]
+    },
+    "production": {
+      "presets": ["next/babel"],
+      "plugins": [
+        [
+          "file-loader",
+          {
+            "name": "[path][name].[hash].[ext]",
+            "extensions": ["css", "json", "png", "jpg", "jpeg", "svg", "ico"],
+            "publicPath": "/",
+            "outputPath": "/src/public",
+            "context": "/src/public",
+            "limit": 0
+          }
+        ]
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "next/babel"
+        ]
+      ]
+    }
+  }
+}
