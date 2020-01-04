@@ -1,0 +1,26 @@
+{
+  "name": "d3-stock-chart-react",
+  "short_name": "d3-stock-chart-react",
+  "background_color": "#FFFFFF",
+  "description": "app",
+  "display": "standalone",
+  "start_url": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "./favicon.ico",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "./favicon.ico",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "./favicon.ico",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}

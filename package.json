@@ -1,0 +1,75 @@
+{
+  "name": "d3-stock-chart-react",
+  "version": "1.0.0",
+  "description": "d3-stock-chart-react",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamurbanik/d3-stock-chart-react.git"
+  },
+  "author": "Adam Urbanik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamurbanik/d3-stock-chart-react/issues"
+  },
+  "homepage": "https://github.com/adamurbanik/d3-stock-chart-react#readme",
+  "engines": {
+    "npm": ">=6.9.0",
+    "node": ">=10.16.0"
+  },
+  "scripts": {
+    "dev": "check-node-version --package && NODE_ENV=development nodemon -w src/server --ext '.js' --require dotenv/config --require @babel/register src/server",
+    "test": "check-node-version --package && jest",
+    "qa": "npm run qa::lint",
+    "qa::flow": "flow check",
+    "qa::lint": "eslint --ext .jsx --ext .js src tests",
+    "qa::prettier": "pretty-quick --staged",
+    "prepush": "npm test && flow check"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "classnames": "^2.2.6",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "log4js": "^6.1.0",
+    "next": "^9.1.7",
+    "node-fetch": "^2.6.0",
+    "ramda": "^0.26.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/register": "^7.7.7",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-file-loader": "^2.0.0",
+    "babel-plugin-inline-react-svg": "^1.1.0",
+    "babel-plugin-ramda": "^2.0.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "check-node-version": "^4.0.2",
+    "compression": "^1.7.4",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.3",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-config-react-app": "^5.1.0",
+    "eslint-plugin-flowtype": "^4.5.3",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^23.3.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "flow-bin": "^0.115.0",
+    "husky": "^0.14.3",
+    "jest": "^24.9.0",
+    "jest-fetch-mock": "^3.0.1",
+    "nock": "^11.7.1",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2"
+  }
+}
