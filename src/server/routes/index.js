@@ -1,11 +1,14 @@
 import { Router } from 'express';
 import { getLogger } from 'log4js';
+import { createApiRoutes } from './api';
 const log = getLogger();
 
 const createRoutes = () => {
-  const routes = Router();
+  const router = Router();
 
-  routes.use((err, req, res, next) => {
+  router.use('/api', createApiRoutes());
+
+  router.use((err, req, res, next) => {
     if (typeof err === 'object' || !err instanceof Error) {
       err = JSON.stringify(err);
     }
@@ -14,7 +17,7 @@ const createRoutes = () => {
     return res.redirect(`/err/${res.statusCode}`);
   });
 
-  return routes;
+  return router;
 };
 
 export { createRoutes };
