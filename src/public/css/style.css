@@ -8,7 +8,12 @@ STOCK PRICE
 	--color-white: #ffffff;
 }
 
-body { font: 12px Arial;}
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body { font: 16px Arial;}
 
 .area1 {
 	fill: var(--color-blue);
@@ -68,3 +73,4 @@ body { font: 12px Arial;}
 .svg-stock, .svg-chart {
 	margin-left: -35px;
 }
+

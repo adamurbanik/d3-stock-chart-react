@@ -1,42 +1,20 @@
-import * as d3 from "d3";
+import * as d3 from 'd3';
 
 class D3Service {
-  constructor(data) {
+  constructor() {
     this.parseDate = d3.timeParse('%Y-%m-%d');
 
     this.stockNumber = 1;
     this.chartNumber = 1;
-    this.stockDomains = {};
-    this.domains = {};
-    this.stockData = {};
-    this.selectedStockID = 1;
-    this.stockDomainsX = [];
-    this.stockDomainsY = [];
-    this.domainsX = [];
-    this.domainsY = [];
-    this.focuses = [];
-    this.stocksIds = [];
-
-    this.prepareStock();
-    this.setStock(`area${this.selectedStockID}`);
-    this.getStockData(data);
-    this.prepareChart();
-    this.getChartData(data);
-  }
-
-  setStock(stock) {
-    this.selectedStockID = stock;
   }
 
   prepareStock() {
-    this.svg = d3.select('.svg-stock');
-    this.marginStock = { top: 60, right: 20, bottom: 100, left: 40 };
+    this.svgStock = d3.select('.svg-stock');
+    const marginStock = { top: 60, right: 20, bottom: 100, left: 40 };
     this.widthStock =
-      +this.svg.attr('width') - this.marginStock.left - this.marginStock.right;
+      +this.svgStock.attr('width') - marginStock.left - marginStock.right;
     this.heightStock =
-      +this.svg.attr('height') - this.marginStock.top - this.marginStock.bottom;
-
-    this.parseDate = d3.timeParse('%Y-%m-%d');
+      +this.svgStock.attr('height') - marginStock.top - marginStock.bottom;
 
     this.xStock = d3.scaleTime().range([0, this.widthStock]);
     this.yStock = d3.scaleLinear().range([this.heightStock, 0]);
@@ -52,8 +30,7 @@ class D3Service {
       ])
       .on('brush end', this.brushed.bind(this));
 
-    this.areaStock = d3
-      .area()
+    d3.area()
       .curve(d3.curveMonotoneX)
       .x(d => this.xStock(d.date))
       .y0(this.heightStock)
@@ -64,61 +41,65 @@ class D3Service {
       .x(d => this.xStock(d.date))
       .y(d => this.yStock(d.high));
 
-    this.context = this.svg
+    this.context = this.svgStock
       .append('g')
       .attr('class', 'context')
       .attr(
         'transform',
-        'translate(' + this.marginStock.left + ',' + this.marginStock.top + ')'
+        'translate(' + marginStock.left + ',' + marginStock.top + ')'
       );
   }
 
-  getStockData(data) {
-      data.forEach(d => {
-        d.date = this.parseDate(d[0]);
-        d.high = +d[2];
-        d.low = +d[3];
-      });
+  applyStockData(data) {
+    if (this.svgStock) {
+      d3.select('.svg-stock')
+        .selectAll('*')
+        .remove();
+    }
 
-      this.xStock.domain(
-        d3.extent(data, function(d) {
-          return d.date;
-        })
-      );
-      this.yStock.domain([
-        d3.min(data, function(d) {
-          return d.low;
-        }),
-        d3.max(data, function(d) {
-          return d.high;
-        })
-      ]);
+    this.prepareStock();
 
-      this.stockDomainsX.push(this.xStock);
-      this.stockDomainsY.push(this.yStock);
+    data.forEach(d => {
+      d.date = this.parseDate(d[0]);
+      d.high = +d[2];
+      d.low = +d[3];
+    });
 
-      let classNames = `line line${this.stockNumber}`;
-      this.context
-        .append('path')
-        .datum(data)
-        .attr('class', classNames)
-        .attr('d', this.valueline);
+    this.xStock.domain(
+      d3.extent(data, function(d) {
+        return d.date;
+      })
+    );
+    this.yStock.domain([
+      d3.min(data, function(d) {
+        return d.low;
+      }),
+      d3.max(data, function(d) {
+        return d.high;
+      })
+    ]);
 
-      if (this.stockNumber++ === 1) {
-        this.context
-          .append('g')
-          .attr('class', 'axis axis--x')
-          .attr('transform', 'translate(0,' + this.heightStock + ')')
-          .call(this.xAxisStock);
+    let classNames = `line line${this.stockNumber}`;
+    this.context
+      .append('path')
+      .datum(data)
+      .attr('class', classNames)
+      .attr('d', this.valueline);
 
-        this.context
-          .append('g')
-          .attr('class', 'axis axis--y')
-          .call(this.yAxisStock);
-      }
+    this.context
+      .append('g')
+      .attr('class', 'axis axis--x')
+      .attr('transform', 'translate(0,' + this.heightStock + ')')
+      .call(this.xAxisStock);
 
-      this.stockData[this.selectedStockID] = data;
-      this.stocksIds.push(this.selectedStockID);
+    this.context
+      .append('g')
+      .attr('class', 'axis axis--y')
+      .call(this.yAxisStock);
+  }
+
+  clearStockData() {
+    this.context = null;
   }
 
   prepareChart() {
@@ -173,8 +154,15 @@ class D3Service {
       );
   }
 
-  getChartData() {
-    var data = this.stockData[this.selectedStockID];
+  applyChartData(data) {
+    if (this.svgChart) {
+      d3.select('.svg-chart')
+        .selectAll('*')
+        .remove();
+    }
+
+    this.prepareChart();
+
     this.x.domain(
       d3.extent(data, function(d) {
         return d.date;
@@ -188,10 +176,6 @@ class D3Service {
         return d.high;
       })
     ]);
-    this.domains[this.selectedStockID] = this.x;
-
-    this.domainsX.push(this.x);
-    this.domainsY.push(this.y);
 
     this.focus
       .append('path')
@@ -199,35 +183,33 @@ class D3Service {
       .attr('class', `area${this.chartNumber}`)
       .attr('d', this.area);
 
-    if (this.chartNumber++ === 1) {
-      this.focus
-        .append('g')
-        .attr('class', 'axis axis--x')
-        .attr('transform', 'translate(0,' + this.height + ')')
-        .call(this.xAxis);
+    this.focus
+      .append('g')
+      .attr('class', 'axis axis--x')
+      .attr('transform', 'translate(0,' + this.height + ')')
+      .call(this.xAxis);
 
-      this.focus
-        .append('g')
-        .attr('class', 'axis axis--y')
-        .call(this.yAxis);
+    this.focus
+      .append('g')
+      .attr('class', 'axis axis--y')
+      .call(this.yAxis);
 
-      this.svgChart
-        .append('rect')
-        .attr('class', 'zoom')
-        .attr('width', this.width)
-        .attr('height', this.height)
-        .attr(
-          'transform',
-          'translate(' + this.margin.left + ',' + this.margin.top + ')'
-        )
-        .call(this.zoom);
+    this.svgChart
+      .append('rect')
+      .attr('class', 'zoom')
+      .attr('width', this.width)
+      .attr('height', this.height)
+      .attr(
+        'transform',
+        'translate(' + this.margin.left + ',' + this.margin.top + ')'
+      )
+      .call(this.zoom);
 
-      this.context
-        .append('g')
-        .attr('class', 'brush')
-        .call(this.brush)
-        .call(this.brush.move, this.xStock.range());
-    }
+    this.context
+      .append('g')
+      .attr('class', 'brush')
+      .call(this.brush)
+      .call(this.brush.move, this.xStock.range());
   }
 
   brushed() {
@@ -235,8 +217,8 @@ class D3Service {
     if (!this.focus) return;
     var s = d3.event.selection || this.xStock.range();
 
-    this.domains['area1'].domain(s.map(this.xStock.invert, this.xStock));
-    this.focus.select(`.${this.selectedStockID}`).attr('d', this.area);
+    this.x.domain(s.map(this.xStock.invert, this.xStock));
+    this.focus.select('.area1').attr('d', this.area);
     this.focus.select('.axis--x').call(this.xAxis);
     this.svgChart
       .select('.zoom')
@@ -244,17 +226,15 @@ class D3Service {
         this.zoom.transform,
         d3.zoomIdentity.scale(this.width / (s[1] - s[0])).translate(-s[0], 0)
       );
-
   }
 
   zoomed() {
-    if (!this.domains[this.selectedStockID]) return;
     if (d3.event.sourceEvent && d3.event.sourceEvent.type === 'brush') return;
     var t = d3.event.transform;
 
-    this.domains[this.selectedStockID].domain(t.rescaleX(this.xStock).domain());
+    this.x.domain(t.rescaleX(this.xStock).domain());
 
-    this.focus.select(`.${this.selectedStockID}`).attr('d', this.area);
+    this.focus.select('.area1').attr('d', this.area);
     this.focus.select('.axis--x').call(this.xAxis);
     this.context
       .select('.brush')

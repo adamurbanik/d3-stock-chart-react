@@ -1,26 +1,27 @@
-import React from 'react';
+import { default as React, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Button from '@material-ui/core/Button';
 import Layout from '../components/layout/layout';
-import d3Service from '../services/d3Service';
+import Main from '../components/layout/main';
+import Header from '../components/header';
+import D3Service from '../services/d3Service';
+import { apiRoutes } from '../utils/config';
 
-const Home = () => {
+const Stock = ({ classes }) => {
+  let d3 = useRef();
 
+  useEffect(() => {
+    d3 = new D3Service();
+  }, []);
 
   const onClickHandler = async () => {
-    console.log('onClickHandler');
-
     try {
-      const response = await fetch(`http://localhost:3000/app/api/stock/request`)
+      const response = await fetch(`${apiRoutes.requestStock}`);
       const { data } = await response.json();
 
-      const d3 = new d3Service(data);
-
-
-    } catch (err) {
-      console.log('err', err);
-    }
-
+      d3.applyStockData(data);
+      d3.applyChartData(data);
+    } catch (err) {}
   };
 
   return (
@@ -28,14 +29,31 @@ const Home = () => {
       <Head>
         <title>Stock Chart</title>
       </Head>
-      <Button variant="outlined" color="primary" onClick={onClickHandler}>
-        Click
-      </Button>
-      <svg className="svg-stock" width="960" height="500"></svg>
-      <svg className="svg-chart" width="960" height="500"></svg>
-      <style jsx>{``}</style>
+      <Main>
+        <Header />
+        <div className="button-wrapper">
+          <Button variant="outlined" color="primary" onClick={onClickHandler}>
+            Show Chart
+          </Button>
+          <div className="chart-wrapper">
+            <svg className="svg-stock" width="960" height="500"></svg>
+            <svg className="svg-chart" width="960" height="500"></svg>
+          </div>
+        </div>
+      </Main>
+      <style jsx>{`
+        .button-wrapper {
+          align-self: center;
+        }
+
+        .chart-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      `}</style>
     </Layout>
   );
 };
 
-export default Home;
+export default Stock;
