@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 import next from 'next';
 import { getLogger } from 'log4js';
 import { createServer } from './server';

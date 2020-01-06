@@ -12,6 +12,20 @@ const config: ServerConfig = {
   logLevel: process.env.LOG_LEVEL || ''
 };
 
-export {
-  config as default
-}
+type QuandlConfig = {
+  stocksEndpoint: string,
+  dataset: string,
+  asset: string,
+  dataType: string,
+  apiKey: string
+};
+
+const quandlConfig: QuandlConfig = {
+  stocksEndpoint: process.env.QUANDL_STOCKS_ENDPOINT || '',
+  dataset: process.env.QUANDL_DATASET || '',
+  asset: process.env.ASSET || '',
+  dataType: process.env.DATA_TYPE || '',
+  apiKey: process.env.QUANDL_API_KEY || ''
+};
+
+export { config as default, quandlConfig };
