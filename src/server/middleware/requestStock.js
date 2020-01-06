@@ -5,11 +5,11 @@ const log = getLogger();
 export const requestStock = async (req, res) => {
   try {
     const response = await stockService.requestStockData();
-    const stock = await response.json();
+    const { dataset_data: { data } = {} } = await response.json();
 
     log.debug(`Stock retrieved successfully ${response.status}`);
 
-    return res.status(response.status).json({ stock });
+    return res.status(response.status).json({ data });
   } catch (err) {
     const { status = 500, description = '', message = '' } = err;
 
