@@ -4,6 +4,7 @@ import Head from 'next/head';
 import getConfig from 'next/config';
 import favicon from '../../public/favicon.ico';
 import manifest from '../../public/manifest.json';
+import css from '../../public/css/style.css';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -19,6 +20,7 @@ const AppHead = ({ children }: PropTypes) => (
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href={getAsset(favicon)} />
     <link rel="manifest" href={getAsset(manifest)} />
+    <link rel="stylesheet" href={getAsset(css)} />
     {children}
   </Head>
 );
