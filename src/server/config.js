@@ -14,17 +14,15 @@ const config: ServerConfig = {
 
 type QuandlConfig = {
   stocksEndpoint: string,
-  dataset: string,
-  asset: string,
-  dataType: string,
+  database: string,
+  returnFormat: string,
   apiKey: string
 };
 
 const quandlConfig: QuandlConfig = {
   stocksEndpoint: process.env.QUANDL_STOCKS_ENDPOINT || '',
-  dataset: process.env.QUANDL_DATASET || '',
-  asset: process.env.ASSET || '',
-  dataType: process.env.DATA_TYPE || '',
+  database: process.env.QUANDL_DATABASE_CODE || '',
+  returnFormat: process.env.RETURN_FORMAT || '',
   apiKey: process.env.QUANDL_API_KEY || ''
 };
 

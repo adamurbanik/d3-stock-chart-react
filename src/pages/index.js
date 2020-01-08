@@ -16,7 +16,7 @@ const Stock = ({ classes }) => {
 
   const onClickHandler = async () => {
     try {
-      const response = await fetch(`${apiRoutes.requestStock}`);
+      const response = await fetch(`${apiRoutes.requestStock}?dataset=AAPL`);
       const { data } = await response.json();
 
       d3.applyStockData(data);

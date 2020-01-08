@@ -3,8 +3,10 @@ import * as stockService from '../services/stocksService';
 const log = getLogger();
 
 export const requestStock = async (req, res) => {
+  const { query: { dataset = '' } } = req;
+
   try {
-    const response = await stockService.requestStockData();
+    const response = await stockService.requestStockData({ dataset });
     const { dataset_data: { data } = {} } = await response.json();
 
     log.debug(`Stock retrieved successfully ${response.status}`);
