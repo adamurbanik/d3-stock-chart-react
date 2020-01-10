@@ -8,6 +8,11 @@ class D3Service {
     this.chartNumber = 1;
   }
 
+  removeAll() {
+    this.removeStock();
+    this.removeChart();
+  }
+
   prepareStock() {
     this.svgStock = d3.select('.svg-stock');
     const marginStock = { top: 60, right: 20, bottom: 100, left: 40 };
@@ -50,13 +55,16 @@ class D3Service {
       );
   }
 
-  applyStockData(data) {
+  removeStock() {
     if (this.svgStock) {
       d3.select('.svg-stock')
         .selectAll('*')
         .remove();
     }
+  }
 
+  applyStockData(data) {
+    this.removeStock();
     this.prepareStock();
 
     data.forEach(d => {
@@ -96,10 +104,6 @@ class D3Service {
       .append('g')
       .attr('class', 'axis axis--y')
       .call(this.yAxisStock);
-  }
-
-  clearStockData() {
-    this.context = null;
   }
 
   prepareChart() {
@@ -154,13 +158,16 @@ class D3Service {
       );
   }
 
-  applyChartData(data) {
+  removeChart() {
     if (this.svgChart) {
       d3.select('.svg-chart')
         .selectAll('*')
         .remove();
     }
+  }
 
+  applyChartData(data) {
+    this.removeChart();
     this.prepareChart();
 
     this.x.domain(

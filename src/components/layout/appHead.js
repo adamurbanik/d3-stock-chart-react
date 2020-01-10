@@ -22,7 +22,7 @@ const AppHead = ({ children }: PropTypes) => (
     <link rel="icon" href={getAsset(favicon)} />
     <link rel="manifest" href={getAsset(manifest)} />
     <link rel="stylesheet" href={getAsset(css)} />
-    <link rel="stylesheet" href={getAsset(svgFile)} />
+    <link rel="image/svg+xml" href={getAsset(svgFile)} />
     {children}
   </Head>
 );

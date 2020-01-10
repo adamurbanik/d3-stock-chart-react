@@ -1,7 +1,4 @@
-const get = (
-  { url = '', headers = {} },
-  fetch
-) => {
+const get = ({ url = '', headers = {} }, fetch) => {
   return fetch(url, {
     headers: {
       ...headers
@@ -9,10 +6,7 @@ const get = (
   });
 };
 
-const post = (
-  { url = '', body = '', headers = {} },
-  fetch
-) => {
+const post = ({ url = '', body = '', headers = {} }, fetch) => {
   return fetch(url, {
     headers: {
       ...headers
