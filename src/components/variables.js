@@ -20,8 +20,8 @@ const colors = {
   white: '#FFF',
   black: 'black',
   primary: '#3f51b5',
-  darkerPrimary: '#575c5b',
-  lighterPrimary: '#a2a8a7',
+  darkerGrey: '#575c5b',
+  lighterGrey: '#f5f5f5',
   secondary: '#fb7907',
   tertiary: '#fbd607',
   error: '#7d0000'

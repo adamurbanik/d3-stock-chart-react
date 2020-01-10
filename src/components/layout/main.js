@@ -12,9 +12,6 @@ const Main = ({ children }: Props): React.Node => (
         #main {
           margin: 0 auto;
           width: 80%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
           padding: ${spacing.xl} ${spacing.lg};
         }
       `}

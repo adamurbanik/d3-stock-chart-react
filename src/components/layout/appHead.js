@@ -5,6 +5,7 @@ import getConfig from 'next/config';
 import favicon from '../../public/favicon.ico';
 import manifest from '../../public/manifest.json';
 import css from '../../public/css/style.css';
+import svgFile from '../../public/img/sprite.svg';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -21,6 +22,7 @@ const AppHead = ({ children }: PropTypes) => (
     <link rel="icon" href={getAsset(favicon)} />
     <link rel="manifest" href={getAsset(manifest)} />
     <link rel="stylesheet" href={getAsset(css)} />
+    <link rel="stylesheet" href={getAsset(svgFile)} />
     {children}
   </Head>
 );
