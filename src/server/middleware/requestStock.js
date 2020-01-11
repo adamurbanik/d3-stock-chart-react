@@ -3,13 +3,17 @@ import * as stockService from '../services/stocksService';
 const log = getLogger();
 
 export const requestStock = async (req, res) => {
+  const {
+    query: { dataset = '' }
+  } = req;
+
   try {
-    const response = await stockService.requestStockData();
-    const stock = await response.json();
+    const response = await stockService.requestStockData({ dataset });
+    const { dataset_data: { data } = {} } = await response.json();
 
     log.debug(`Stock retrieved successfully ${response.status}`);
 
-    return res.status(response.status).json({ stock });
+    return res.status(response.status).json({ data });
   } catch (err) {
     const { status = 500, description = '', message = '' } = err;
 

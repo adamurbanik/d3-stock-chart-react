@@ -1,0 +1,76 @@
+/*******************************
+STOCK PRICE
+*******************************/
+:root {
+	--color-blue: #4682b4;
+	--color-orange: #ffa050;
+	--color-lightOrange: #ffc299;
+	--color-white: #ffffff;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body { font: 16px Arial;}
+
+.area1 {
+	fill: var(--color-blue);
+	clip-path: url(#clip);
+}
+
+.area2 {
+	fill: var(--color-orange);
+	clip-path: url(#clip);
+}
+
+.area3 {
+	fill: var(--color-lightOrange);
+	clip-path: url(#clip);
+}
+
+.line1 {
+	fill: none;
+	stroke: var(--color-blue);
+	stroke-width: 2px;
+}
+
+.line2 {
+	fill: none;
+	stroke: var(--color-orange);
+	stroke-width: 2px;
+}
+
+.line3 {
+	fill: none;
+	stroke: var(--color-lightOrange);
+	stroke-width: 2px;
+}
+
+.full button span {
+	background-color: limegreen;
+	border-radius: 32px;
+	color: black;
+}
+
+.partially button span {
+	background-color: orange;
+	border-radius: 32px;
+	color: black;
+}
+
+.btn-group {
+	display: block;
+}
+
+.zoom {
+	cursor: move;
+	fill: none;
+	pointer-events: all;
+}
+
+.svg-stock, .svg-chart {
+	margin-left: -35px;
+}
+

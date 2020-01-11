@@ -1,5 +1,4 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
+//@flow
 import next from 'next';
 import { getLogger } from 'log4js';
 import { createServer } from './server';
@@ -12,6 +11,7 @@ const handle = app.getRequestHandler();
 const { port: PORT, contextRoute: CONTEXT_ROUTE } = config;
 const log = getLogger();
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 process.env.__app_name = 'd3-stock-react-chart';
 
 app
