@@ -38,33 +38,37 @@ exports[`<Stock /> renders in error state 1`] = `
     </h2>
   </header>
   <div
-    className="jsx-44534442 container"
+    className="jsx-860535784 container"
   >
-    <form
-      action="#"
-      className="jsx-3112589256 search-form"
+    <div
+      className="jsx-2694548524 container-form"
     >
-      <input
-        className="jsx-3112589256 search__input"
-        name="search__input"
-        onChange={[Function]}
-        placeholder="Enter stock symbol i.e. AAPL, FB"
-        type="text"
-      />
-      <button
-        className="jsx-3112589256 search__button show"
-        onClick={[Function]}
+      <form
+        action="#"
+        className="jsx-2694548524 search-form"
       >
-        <svg
-          className="jsx-3112589256 search__icon"
+        <input
+          className="jsx-2694548524 search__input"
+          name="search__input"
+          onChange={[Function]}
+          placeholder="Enter stock symbol i.e. AAPL, FB"
+          type="text"
+        />
+        <button
+          className="jsx-2694548524 search__button"
+          onClick={[Function]}
         >
-          <use
-            className="jsx-3112589256"
-            xlinkHref="app/img/sprite.svg#icon-magnifying-glass"
-          />
-        </svg>
-      </button>
-    </form>
+          <svg
+            className="jsx-2694548524 search__icon"
+          >
+            <use
+              className="jsx-2694548524"
+              xlinkHref="app/img/sprite.svg#icon-magnifying-glass"
+            />
+          </svg>
+        </button>
+      </form>
+    </div>
     <div
       className="jsx-1657759666 error-container"
     >
@@ -87,15 +91,15 @@ exports[`<Stock /> renders in error state 1`] = `
       </a>
     </div>
     <div
-      className="jsx-44534442 chart-wrapper"
+      className="jsx-860535784 chart-wrapper"
     >
       <svg
-        className="jsx-44534442 svg-stock"
+        className="jsx-860535784 svg-stock"
         height="500"
         width="960"
       />
       <svg
-        className="jsx-44534442 svg-chart"
+        className="jsx-860535784 svg-chart"
         height="500"
         width="960"
       />
@@ -124,43 +128,47 @@ exports[`<Stock /> renders in successfully submitted state 1`] = `
     </h2>
   </header>
   <div
-    className="jsx-44534442 container"
+    className="jsx-860535784 container"
   >
-    <form
-      action="#"
-      className="jsx-3112589256 search-form"
-    >
-      <input
-        className="jsx-3112589256 search__input"
-        name="search__input"
-        onChange={[Function]}
-        placeholder="Enter stock symbol i.e. AAPL, FB"
-        type="text"
-      />
-      <button
-        className="jsx-3112589256 search__button show"
-        onClick={[Function]}
-      >
-        <svg
-          className="jsx-3112589256 search__icon"
-        >
-          <use
-            className="jsx-3112589256"
-            xlinkHref="app/img/sprite.svg#icon-magnifying-glass"
-          />
-        </svg>
-      </button>
-    </form>
     <div
-      className="jsx-44534442 chart-wrapper show"
+      className="jsx-2694548524 container-form"
+    >
+      <form
+        action="#"
+        className="jsx-2694548524 search-form"
+      >
+        <input
+          className="jsx-2694548524 search__input"
+          name="search__input"
+          onChange={[Function]}
+          placeholder="Enter stock symbol i.e. AAPL, FB"
+          type="text"
+        />
+        <button
+          className="jsx-2694548524 search__button"
+          onClick={[Function]}
+        >
+          <svg
+            className="jsx-2694548524 search__icon"
+          >
+            <use
+              className="jsx-2694548524"
+              xlinkHref="app/img/sprite.svg#icon-magnifying-glass"
+            />
+          </svg>
+        </button>
+      </form>
+    </div>
+    <div
+      className="jsx-860535784 chart-wrapper show"
     >
       <svg
-        className="jsx-44534442 svg-stock"
+        className="jsx-860535784 svg-stock"
         height="500"
         width="960"
       />
       <svg
-        className="jsx-44534442 svg-chart"
+        className="jsx-860535784 svg-chart"
         height="500"
         width="960"
       />

@@ -38,6 +38,7 @@ const Stock = ({ d3Service }) => {
     } catch (err) {
       setSubmitSuccess(false);
     } finally {
+      setIndexCode('');
       setSubmitted(true);
       setIsLoading(false);
     }
@@ -61,8 +62,8 @@ const Stock = ({ d3Service }) => {
           )}
           {!isLoading && submitted && !submitSuccess && <Error />}
           <div className={classNames('chart-wrapper', { show: submitSuccess })}>
-            <svg className="svg-stock" width="960" height="500"></svg>
-            <svg className="svg-chart" width="960" height="500"></svg>
+            <svg className="svg-stock" width="960" height="500"/>
+            <svg className="svg-chart" width="960" height="500"/>
           </div>
         </div>
       </Main>
@@ -70,6 +71,7 @@ const Stock = ({ d3Service }) => {
         .container {
           display: flex;
           flex-direction: column;
+          align-items: center;
         }
 
         .chart-wrapper {
