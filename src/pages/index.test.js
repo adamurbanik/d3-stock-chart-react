@@ -34,7 +34,7 @@ describe('<Stock />', () => {
       const button = tree.root.find(el => el.type === 'button');
       await button.props.onClick();
 
-      const chartWrapper = tree.root.findAllByType('div')[1]
+      const chartWrapper = tree.root.findAllByType('div')[2];
 
       expect(tree.toJSON()).toMatchSnapshot();
       expect(chartWrapper.props.className.includes('show')).toBe(true);
@@ -54,13 +54,13 @@ describe('<Stock />', () => {
       const button = tree.root.find(el => el.type === 'button');
       await button.props.onClick();
 
-      const chartWrapper = tree.root.findAllByType('div')[1]
+      const chartWrapper = tree.root.findAllByType('div')[1];
 
       const error = tree.root.findAllByType('h1')[1];
 
       expect(tree.toJSON()).toMatchSnapshot();
       expect(chartWrapper.props.className.includes('show')).toBe(false);
-      expect(error.props.className.includes('error-header')).toBe(true)
+      expect(error.props.className.includes('error-header')).toBe(true);
     });
-  })
+  });
 });
