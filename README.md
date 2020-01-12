@@ -1,18 +1,18 @@
 d3-stock-chart-react
 =======
+Project structure and technology stack originates from [NextJS](https://nextjs.org/) framework with addon of [Material UI](https://material-ui.com/).
+Application to process and to display stock data from external resources. Chart is drawn with the help of d3 library.  
 
 Requirements
 ------------
-
-- Node >= 
-- NPM >= 
-
+- NPM >= 6.9.0
+- Node >= 10.16.0
 
 Quickstart
 ----------
 
 - `npm i`
-- `npm run start`
+- `npm run dev`
 
 
 Access
@@ -21,7 +21,3 @@ Access
 Client side app
 
 `http://localhost:3000`
-
-Server side api app
-
-`http://localhost:3001`

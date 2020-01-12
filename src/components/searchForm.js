@@ -10,6 +10,7 @@ const SearchForm = ({
   <>
     <form className="search-form" action="#">
       <input
+        name="search__input"
         className="search__input"
         type="text"
         placeholder="Enter stock symbol i.e. AAPL, FB"
@@ -77,7 +78,7 @@ const SearchForm = ({
       }
       @media screen and (min-width: ${breakpoints.large}) {
         .search__input {
-          flex: 0 0 60%;
+          flex: 0 0 80%;
         }
       }
     `}</style>

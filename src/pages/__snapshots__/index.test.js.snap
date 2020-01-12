@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Stock /> renders correctly 1`] = `
+<Stock
+  d3Service={
+    D3Service {
+      "applyChartData": [MockFunction],
+      "applyStockData": [MockFunction],
+      "brushed": [MockFunction],
+      "prepareChart": [MockFunction],
+      "prepareStock": [MockFunction],
+      "removeAll": [MockFunction],
+      "removeChart": [MockFunction],
+      "removeStock": [MockFunction],
+      "zoomed": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`<Stock /> renders in error state 1`] = `
+<main
+  className="jsx-2153476396"
+  id="main"
+>
+  <header
+    className="jsx-2367272142 header-wrapper"
+  >
+    <h1
+      className="jsx-2367272142"
+    >
+      Stock Chart
+    </h1>
+    <h2
+      className="jsx-2367272142"
+    >
+      Select options to see chart data
+    </h2>
+  </header>
+  <div
+    className="jsx-44534442 container"
+  >
+    <form
+      action="#"
+      className="jsx-3112589256 search-form"
+    >
+      <input
+        className="jsx-3112589256 search__input"
+        name="search__input"
+        onChange={[Function]}
+        placeholder="Enter stock symbol i.e. AAPL, FB"
+        type="text"
+      />
+      <button
+        className="jsx-3112589256 search__button show"
+        onClick={[Function]}
+      >
+        <svg
+          className="jsx-3112589256 search__icon"
+        >
+          <use
+            className="jsx-3112589256"
+            xlinkHref="app/img/sprite.svg#icon-magnifying-glass"
+          />
+        </svg>
+      </button>
+    </form>
+    <div
+      className="jsx-1657759666 error-container"
+    >
+      <h1
+        className="jsx-1657759666 error-header"
+      >
+        Sorry
+      </h1>
+      <p
+        className="jsx-1657759666 error-message"
+      >
+        This data could not be downloaded. Please try again with a different stock code
+         
+      </p>
+      <a
+        className="jsx-1657759666"
+        href="/"
+      >
+        Go back
+      </a>
+    </div>
+    <div
+      className="jsx-44534442 chart-wrapper"
+    >
+      <svg
+        className="jsx-44534442 svg-stock"
+        height="500"
+        width="960"
+      />
+      <svg
+        className="jsx-44534442 svg-chart"
+        height="500"
+        width="960"
+      />
+    </div>
+  </div>
+</main>
+`;
+
+exports[`<Stock /> renders in successfully submitted state 1`] = `
+<main
+  className="jsx-2153476396"
+  id="main"
+>
+  <header
+    className="jsx-2367272142 header-wrapper"
+  >
+    <h1
+      className="jsx-2367272142"
+    >
+      Stock Chart
+    </h1>
+    <h2
+      className="jsx-2367272142"
+    >
+      Select options to see chart data
+    </h2>
+  </header>
+  <div
+    className="jsx-44534442 container"
+  >
+    <form
+      action="#"
+      className="jsx-3112589256 search-form"
+    >
+      <input
+        className="jsx-3112589256 search__input"
+        name="search__input"
+        onChange={[Function]}
+        placeholder="Enter stock symbol i.e. AAPL, FB"
+        type="text"
+      />
+      <button
+        className="jsx-3112589256 search__button show"
+        onClick={[Function]}
+      >
+        <svg
+          className="jsx-3112589256 search__icon"
+        >
+          <use
+            className="jsx-3112589256"
+            xlinkHref="app/img/sprite.svg#icon-magnifying-glass"
+          />
+        </svg>
+      </button>
+    </form>
+    <div
+      className="jsx-44534442 chart-wrapper show"
+    >
+      <svg
+        className="jsx-44534442 svg-stock"
+        height="500"
+        width="960"
+      />
+      <svg
+        className="jsx-44534442 svg-chart"
+        height="500"
+        width="960"
+      />
+    </div>
+  </div>
+</main>
+`;
