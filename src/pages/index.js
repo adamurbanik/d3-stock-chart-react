@@ -1,5 +1,6 @@
 import { default as React, useState } from 'react';
 import Head from 'next/head';
+import classNames from 'classnames';
 import Layout from '../components/layout/layout';
 import Main from '../components/layout/main';
 import Header from '../components/header';
@@ -59,7 +60,7 @@ const Stock = ({ d3Service }) => {
             />
           )}
           {!isLoading && submitted && !submitSuccess && <Error />}
-          <div className="chart-wrapper">
+          <div className={classNames('chart-wrapper', { show: submitSuccess })}>
             <svg className="svg-stock" width="960" height="500"></svg>
             <svg className="svg-chart" width="960" height="500"></svg>
           </div>
@@ -75,6 +76,14 @@ const Stock = ({ d3Service }) => {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
+          visibility: hidden;
+          opacity: 0;
+          transition: all 1.5s;
+        }
+        
+        .show {
+          visibility: visible;
+          opacity: 1;
         }
       `}</style>
     </Layout>

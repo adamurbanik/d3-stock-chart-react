@@ -44,8 +44,5 @@ describe('/stock/request route', () => {
 
     expect(res.statusCode).toBe(400);
     expect(res.type).toBe('text/plain');
-
-  })
-
-
   });
+});
