@@ -21,3 +21,7 @@ Access
 Client side app
 
 `http://localhost:3000`
+
+Server side and api
+
+`http://localhost:3000/app/api/stock/request?dataset=AAPL`
